@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+input[type="number"] {
+    padding: 5px;
+    font-size: 1rem;
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #4682b4;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background: #ff6347;
+}
+
+#tabuleiro {
+    display: grid;
+    gap: 5px;
+    margin: 20px auto;
+    border: 5px solid #444;
+    border-radius: 15px;
+    padding: 15px;
+    background: #f0f8ff;
+    transition: all 0.5s ease-in-out;
+}
+
+.celula {
+    width: 80px;
+    height: 80px;
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #333;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.celula:hover {
+    background-color: #ffa07a;
+    transform: scale(1.1);
+}
+
+#mensagem {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
