@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,52 +10,62 @@ body {
 
 .container {
     text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 h1 {
     color: #333;
-}
-
-label {
-    font-size: 1rem;
-    margin-right: 10px;
-}
-
-input[type="number"] {
-    padding: 5px;
-    font-size: 1rem;
-    width: 60px;
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background: #4682b4;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
-button:hover {
+label {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 1rem;
+    width: 70px;
+    margin: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: border 0.3s;
+}
+
+input[type="number"]:focus {
+    border: 2px solid #6a11cb;
+}
+
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
     background: #ff6347;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #ff4500;
 }
 
 #tabuleiro {
     display: grid;
-    gap: 5px;
+    gap: 10px;
     margin: 20px auto;
-    border: 5px solid #444;
+    border: 8px solid #444;
     border-radius: 15px;
-    padding: 15px;
-    background: #f0f8ff;
+    padding: 20px;
+    background: rgba(240, 248, 255, 0.8);
     transition: all 0.5s ease-in-out;
 }
 
@@ -66,22 +76,24 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
     cursor: pointer;
-    border: 2px solid #333;
+    border: 2px solid #555;
     border-radius: 50%;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .celula:hover {
-    background-color: #ffa07a;
+    background-color: #ffeb3b;
     transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 #mensagem {
     margin-top: 15px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }

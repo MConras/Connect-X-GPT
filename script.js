@@ -12,6 +12,8 @@ const CORES_JOGADORES = {
     Vazio: '#f0f8ff'
 };
 
+const ANIMACAO_TEMPO = 800;
+
 function iniciarJogo() {
     const connectInput = parseInt(document.getElementById("connectInput").value);
     if (isNaN(connectInput) || connectInput < 4) {
@@ -19,8 +21,8 @@ function iniciarJogo() {
         return;
     }
     CONNECT = connectInput;
-    ROWS = Math.ceil(1.5 * CONNECT);
     COLUMNS = Math.ceil(1.75 * CONNECT);
+    ROWS = Math.ceil(1.5 * CONNECT);
     document.getElementById("mensagem").textContent = '';
     tabuleiro = Array.from({ length: ROWS }, () => Array(COLUMNS).fill(null));
     criarTabuleiro();
@@ -35,7 +37,8 @@ function criarTabuleiro() {
     tabuleiroDiv.style.border = '5px solid #444';
     tabuleiroDiv.style.borderRadius = '20px';
     tabuleiroDiv.style.padding = '20px';
-    tabuleiroDiv.style.backgroundColor = '#f0f8ff';
+    tabuleiroDiv.style.backgroundColor = 'rgba(240, 248, 255, 0.8)';
+    tabuleiroDiv.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
 
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLUMNS; j++) {
@@ -46,6 +49,14 @@ function criarTabuleiro() {
             celula.addEventListener("click", () => fazerJogada(j));
             celula.style.border = '2px solid #333';
             celula.style.borderRadius = '50%';
+            celula.style.transition = 'transform 0.3s ease, background-color 0.3s ease';
+            celula.style.cursor = 'pointer';
+            celula.addEventListener('mouseenter', () => {
+                celula.style.transform = 'scale(1.1)';
+            });
+            celula.addEventListener('mouseleave', () => {
+                celula.style.transform = 'scale(1)';
+            });
             tabuleiroDiv.appendChild(celula);
         }
     }
@@ -74,12 +85,7 @@ function fazerJogada(coluna) {
         }
     }
 
-    const mensagemElemento = document.getElementById("mensagem");
-    mensagemElemento.textContent = "Coluna cheia! Tente outra coluna.";
-    mensagemElemento.style.color = '#ff6347';
-    mensagemElemento.style.fontWeight = 'bold';
-    mensagemElemento.style.animation = 'shake 0.3s';
-    new Audio('https://www.soundjay.com/button/beep-07.wav').play();
+    document.getElementById("mensagem").textContent = "Coluna cheia! Tente outra coluna.";
 }
 
 function animarBolinhaCaindo(linha, coluna) {
@@ -90,7 +96,7 @@ function animarBolinhaCaindo(linha, coluna) {
             { transform: 'translateY(0)', opacity: 1 }
         ],
         {
-            duration: 800,
+            duration: ANIMACAO_TEMPO,
             easing: 'ease-out'
         }
     );
@@ -104,6 +110,7 @@ function atualizarTabuleiro() {
         const valor = tabuleiro[linha][coluna];
         celula.style.backgroundColor = valor === 'Vermelho' ? CORES_JOGADORES.Vermelho : valor === 'Amarelo' ? CORES_JOGADORES.Amarelo : CORES_JOGADORES.Vazio;
         celula.style.transition = 'background-color 0.5s ease';
+        celula.style.boxShadow = valor ? '0 0 20px rgba(0, 0, 0, 0.5)' : 'none';
     });
 }
 
